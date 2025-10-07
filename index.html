@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mugilan Y - AI & ML Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        :root {
+            --primary-color: #007BFF;
+            --background-color: #f4f4f9;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            background: var(--card-bg);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        header nav a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: var(--primary-color);
+        }
+
+        #about {
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        #about h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        #about .subtitle {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        #about p {
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+            font-size: 1.1rem;
+        }
+        
+        .social-links a {
+            margin: 0 0.75rem;
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.8rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        #projects {
+            padding: 4rem 0;
+        }
+
+        #projects h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .project-card p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        
+        .tags {
+            margin-bottom: 1.5rem;
+        }
+        
+        .tags span {
+            display: inline-block;
+            background-color: #e7f3ff;
+            color: #006ae6;
+            padding: 0.3rem 0.6rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.2rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .project-link:hover {
+            background-color: #0056b3;
+        }
+        
+        #contact {
+            text-align: center;
+            padding: 6rem 0;
+            background-color: var(--card-bg);
+        }
+        
+        #contact h2 {
+             font-size: 2.5rem;
+             margin-bottom: 1rem;
+        }
+        
+        #contact p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        #contact a {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background: #e9ecef;
+        }
+
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#" class="logo">Mugilan Y</a>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="container">
+                <h1>Mugilan Y</h1>
+                <p class="subtitle">AI & Machine Learning Developer</p>
+                <p>
+                    An Artificial Intelligence and Data Science student with a passion for building intelligent applications that solve real-world problems. Experienced in developing full-stack solutions using Large Language Models, machine learning, and interactive web applications. My goal is to contribute to innovative software development, particularly in the aerospace and defense sectors.
+                </p>
+                <div class="social-links">
+                    <!-- FINAL CHANGE 1: LinkedIn URL added -->
+                    <a href="https://www.linkedin.com/in/mugilan-y" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Mugilan1309" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2>Projects</h2>
+                <div class="projects-grid">
+
+                    <!-- Project 1: Mock Interview AI -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>Mock Interview AI</h3>
+                            <p>An interactive web app that simulates a mock interview with a voice-enabled AI avatar. It provides real-time feedback by scoring verbal answers using a BERT model and analyzes on-camera body language for emotional cues with OpenCV and DeepFace.</p>
+                            <div class="tags">
+                                <span>Python</span>
+                                <span>Flask</span>
+                                <span>OpenCV</span>
+                                <span>DeepFace</span>
+                                <span>BERT</span>
+                                <span>Whisper</span>
+                            </div>
+                            <a href="https://github.com/Mugilan1309/Mock_Interview_AI" class="project-link" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: SmartScholar -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>SmartScholar: Document Chatbot</h3>
+                            <p>A research productivity tool that summarizes academic papers and allows users to chat with documents. It extracts text from PDFs, chunks and embeds the content, and uses a RAG pipeline to answer questions based on the document's context.</p>
+                            <div class="tags">
+                                <span>Streamlit</span>
+                                <span>Python</span>
+                                <span>RAG</span>
+                                <span>Hugging Face</span>
+                                <span>Scikit-learn</span>
+                            </div>
+                            <a href="https://github.com/Mugilan1309/Summarizer_Chatbot" class="project-link" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: FarmIQ -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>FarmIQ: Recommendation System</h3>
+                            <p>A machine learning web app providing smart crop and fertilizer recommendations. Based on inputted soil and environmental data, it uses trained Scikit-learn models to deliver predictions through an interactive Streamlit frontend.</p>
+                             <div class="tags">
+                                <span>Streamlit</span>
+                                <span>Python</span>
+                                <span>Scikit-learn</span>
+                                <span>SQLite</span>
+                            </div>
+                            <a href="https://github.com/Mugilan1309/FarmIQ" class="project-link" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: CSV Analyzer -->
+                    <div class="project-card">
+                        <div class="project-content">
+                            <h3>CSV Analyzer Tool</h3>
+                            <p>An analysis and preprocessing tool that allows users to upload a CSV file, perform exploratory data analysis, handle missing values, scale data, and generate visualizations. The processed dataset can then be downloaded for further use.</p>
+                            <div class="tags">
+                                <span>Streamlit</span>
+                                <span>Pandas</span>
+                                <span>Matplotlib</span>
+                                <span>Scikit-learn</span>
+                            </div>
+                            <a href="https://github.com/Mugilan1309/CSV_Analyzer" class="project-link" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
+                <!-- FINAL CHANGE 2: Email link made clickable -->
+                <a href="mailto:mugilanyoganandh@gmail.com">mugilanyoganandh@gmail.com</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Mugilan Y. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
