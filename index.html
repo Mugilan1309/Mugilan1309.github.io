@@ -6,15 +6,31 @@
     <title>Mugilan Y - AI & ML Portfolio</title>
     <style>
         /* Import Google Font */
+/* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-/* --- 1. New Color Palette & Global Styles --- */
+/* --- 1. "Aurora Glow" Color Palette & Global Styles --- */
 :root {
-    --primary-color: #E91E63; /* Vibrant Pink Accent */
-    --background-color: #0d1117; /* GitHub Dark Background */
-    --text-color: #c9d1d9; /* Lighter text for dark bg */
-    --card-bg: rgba(22, 27, 34, 0.55); /* Semi-transparent card background */
-    --border-color: rgba(255, 255, 255, 0.1);
+    /* Main Accent Color */
+    --primary-color: #4ade80; /* Electric Green */
+    --primary-color-darker: #22c55e; /* For button hover */
+    --primary-color-glow: rgba(74, 222, 128, 0.3); /* For glow effect on hover */
+    --primary-color-bg: rgba(74, 222, 128, 0.1); /* For tag background */
+    
+    /* Secondary Accent Color (for gradient) */
+    --secondary-color: #8B5CF6; /* Deep Violet */
+    
+    /* Background & Surfaces */
+    --background-color: #0B0C1D; /* Midnight Blue */
+    --card-bg: rgba(29, 39, 58, 0.55); /* Semi-transparent Slate */
+    --contact-bg: rgba(11, 12, 29, 0.7); /* Slightly darker contact bg */
+
+    /* Text & Borders */
+    --text-color: #E2E8F0; /* Soft Off-White */
+    --text-secondary-color: #94A3B8; /* Muted Grey */
+    --border-color: rgba(226, 232, 240, 0.1); /* Faint Border */
+
+    /* Shadow */
     --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
@@ -22,6 +38,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* Smooth scrolling behavior */
+    scroll-behavior: smooth;
 }
 
 /* --- 2. Animated Gradient Background & Body Styles --- */
@@ -30,7 +48,7 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
-    overflow-x: hidden; /* Prevents horizontal scroll */
+    overflow-x: hidden;
 }
 
 .background-blob {
@@ -39,12 +57,12 @@ body {
     right: -20vw;
     width: 70vw;
     height: 70vh;
-    background: linear-gradient(135deg, var(--primary-color), #673AB7);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border-radius: 50%;
     filter: blur(150px);
-    opacity: 0.15;
+    opacity: 0.2;
     z-index: -1;
-    animation: move-blob 15s infinite alternate;
+    animation: move-blob 20s infinite alternate;
 }
 
 @keyframes move-blob {
@@ -52,7 +70,7 @@ body {
         transform: translate(0, 0) rotate(0deg);
     }
     to {
-        transform: translate(10vw, 10vh) rotate(360deg);
+        transform: translate(15vw, 15vh) rotate(360deg);
     }
 }
 
@@ -70,8 +88,9 @@ header {
     padding: 1.5rem 0;
     background: var(--card-bg);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
 }
 
 header .container {
@@ -92,19 +111,35 @@ header nav a {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 600;
+    position: relative;
+    padding-bottom: 0.25rem;
     transition: color 0.3s ease;
+}
+/* Cool underline effect for nav links */
+header nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
 }
 
 header nav a:hover {
     color: var(--primary-color);
 }
+header nav a:hover::after {
+    width: 100%;
+}
+
 
 /* --- 4. Section Styling & Scroll Animations --- */
 section {
     padding: 6rem 0;
 }
 
-/* Classes for scroll animation */
 .fade-in {
     opacity: 0;
     transform: translateY(30px);
@@ -114,6 +149,10 @@ section {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+#about .container {
+    text-align: center;
 }
 
 #about h1 {
@@ -132,11 +171,7 @@ section {
     max-width: 700px;
     margin: 0 auto 2.5rem auto;
     font-size: 1.1rem;
-    color: #a0aec0; /* Slightly softer text color */
-}
-        /* ADD THIS NEW RULE */
-#about .container {
-    text-align: center;
+    color: var(--text-secondary-color);
 }
 
 .social-links a {
@@ -178,15 +213,15 @@ section {
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 0 20px rgba(0, 194, 203, 0.3); /* Glow effect */
-    border-color: rgba(0, 194, 203, 0.5);
+    box-shadow: 0 0 20px var(--primary-color-glow);
+    border-color: var(--primary-color);
 }
 
 .project-content {
@@ -206,12 +241,12 @@ section {
     font-size: 1rem;
     margin-bottom: 1rem;
     flex-grow: 1;
-    color: #a0aec0;
+    color: var(--text-secondary-color);
 }
 
 .tags span {
     display: inline-block;
-    background-color: rgba(0, 194, 203, 0.1);
+    background-color: var(--primary-color-bg);
     color: var(--primary-color);
     padding: 0.4rem 0.8rem;
     border-radius: 5px;
@@ -223,25 +258,25 @@ section {
 .project-link {
     display: inline-block;
     background: var(--primary-color);
-    color: #fff;
+    color: var(--background-color);
     padding: 0.7rem 1.5rem;
     border-radius: 8px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     transition: background-color 0.3s ease, transform 0.3s ease;
     text-align: center;
     margin-top: auto;
 }
 
 .project-link:hover {
-    background-color: #00a1a8;
+    background-color: var(--primary-color-darker);
     transform: scale(1.05);
 }
 
 /* --- 6. Contact & Footer --- */
 #contact {
     text-align: center;
-    background-color: rgba(13, 17, 23, 0.5); /* Slightly different dark bg */
+    background-color: var(--contact-bg);
 }
 
 #contact h2 {
@@ -252,7 +287,7 @@ section {
 #contact p {
     margin-bottom: 2rem;
     font-size: 1.1rem;
-    color: #a0aec0;
+    color: var(--text-secondary-color);
 }
 
 #contact a {
@@ -299,7 +334,6 @@ footer {
         grid-template-columns: 1fr;
     }
 }
-
     </style>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
